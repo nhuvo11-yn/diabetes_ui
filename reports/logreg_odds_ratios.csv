@@ -1,0 +1,8 @@
+feature,label,coef,odds_ratio
+HighBP,High blood pressure,0.757952116318445,2.1339017602399046
+HighChol,High cholesterol,0.5609232922273311,1.7522896290345449
+GenHlth,Self-rated general health,0.49085449483736365,1.6337116218352212
+HeartDiseaseorAttack,Heart disease or heart attack,0.249324398202182,1.283158219780663
+Age,Age group,0.13233003817779512,1.1414849907321558
+DiffWalk,Difficulty walking / climbing stairs,0.09824178012792632,1.103229491832683
+BMI,Body mass index (BMI),0.06132804071376499,1.0632476455015727

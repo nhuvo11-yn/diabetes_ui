@@ -1,0 +1,235 @@
+{
+  "project": "Diabetes Risk Screening and Health Equity",
+  "disclaimer": "Educational project \u2014 not for clinical use.",
+  "created_utc": "2026-11-15 13:25:08",
+  "target": "Diabetes_binary",
+  "target_meaning": "1 = respondent reported diabetes or prediabetes in the 2015 BRFSS survey (self-reported label)",
+  "model": {
+    "algorithm": "Histogram Gradient Boosting",
+    "algo_key": "hgb",
+    "feature_set": "minimal",
+    "selection_rule": "best validation PR-AUC among the short-questionnaire models"
+  },
+  "features": [
+    "Age",
+    "BMI",
+    "HighBP",
+    "HighChol",
+    "GenHlth",
+    "DiffWalk",
+    "HeartDiseaseorAttack"
+  ],
+  "feature_labels": {
+    "Age": "Age group",
+    "BMI": "Body mass index (BMI)",
+    "HighBP": "High blood pressure",
+    "HighChol": "High cholesterol",
+    "GenHlth": "Self-rated general health",
+    "DiffWalk": "Difficulty walking / climbing stairs",
+    "HeartDiseaseorAttack": "Heart disease or heart attack"
+  },
+  "input_ranges": {
+    "Age": {
+      "min": 1.0,
+      "max": 13.0,
+      "type": "numeric/ordinal"
+    },
+    "BMI": {
+      "min": 12.0,
+      "max": 98.0,
+      "type": "numeric/ordinal"
+    },
+    "HighBP": {
+      "min": 0.0,
+      "max": 1.0,
+      "type": "binary (0/1)"
+    },
+    "HighChol": {
+      "min": 0.0,
+      "max": 1.0,
+      "type": "binary (0/1)"
+    },
+    "GenHlth": {
+      "min": 1.0,
+      "max": 5.0,
+      "type": "numeric/ordinal"
+    },
+    "DiffWalk": {
+      "min": 0.0,
+      "max": 1.0,
+      "type": "binary (0/1)"
+    },
+    "HeartDiseaseorAttack": {
+      "min": 0.0,
+      "max": 1.0,
+      "type": "binary (0/1)"
+    }
+  },
+  "all_feature_ranges": {
+    "HighBP": {
+      "min": 0.0,
+      "max": 1.0,
+      "type": "binary (0/1)"
+    },
+    "HighChol": {
+      "min": 0.0,
+      "max": 1.0,
+      "type": "binary (0/1)"
+    },
+    "CholCheck": {
+      "min": 0.0,
+      "max": 1.0,
+      "type": "binary (0/1)"
+    },
+    "BMI": {
+      "min": 12.0,
+      "max": 98.0,
+      "type": "numeric/ordinal"
+    },
+    "Smoker": {
+      "min": 0.0,
+      "max": 1.0,
+      "type": "binary (0/1)"
+    },
+    "Stroke": {
+      "min": 0.0,
+      "max": 1.0,
+      "type": "binary (0/1)"
+    },
+    "HeartDiseaseorAttack": {
+      "min": 0.0,
+      "max": 1.0,
+      "type": "binary (0/1)"
+    },
+    "PhysActivity": {
+      "min": 0.0,
+      "max": 1.0,
+      "type": "binary (0/1)"
+    },
+    "Fruits": {
+      "min": 0.0,
+      "max": 1.0,
+      "type": "binary (0/1)"
+    },
+    "Veggies": {
+      "min": 0.0,
+      "max": 1.0,
+      "type": "binary (0/1)"
+    },
+    "HvyAlcoholConsump": {
+      "min": 0.0,
+      "max": 1.0,
+      "type": "binary (0/1)"
+    },
+    "AnyHealthcare": {
+      "min": 0.0,
+      "max": 1.0,
+      "type": "binary (0/1)"
+    },
+    "NoDocbcCost": {
+      "min": 0.0,
+      "max": 1.0,
+      "type": "binary (0/1)"
+    },
+    "GenHlth": {
+      "min": 1.0,
+      "max": 5.0,
+      "type": "numeric/ordinal"
+    },
+    "MentHlth": {
+      "min": 0.0,
+      "max": 30.0,
+      "type": "numeric/ordinal"
+    },
+    "PhysHlth": {
+      "min": 0.0,
+      "max": 30.0,
+      "type": "numeric/ordinal"
+    },
+    "DiffWalk": {
+      "min": 0.0,
+      "max": 1.0,
+      "type": "binary (0/1)"
+    },
+    "Sex": {
+      "min": 0.0,
+      "max": 1.0,
+      "type": "binary (0/1)"
+    },
+    "Age": {
+      "min": 1.0,
+      "max": 13.0,
+      "type": "numeric/ordinal"
+    },
+    "Education": {
+      "min": 1.0,
+      "max": 6.0,
+      "type": "numeric/ordinal"
+    },
+    "Income": {
+      "min": 1.0,
+      "max": 8.0,
+      "type": "numeric/ordinal"
+    }
+  },
+  "reference_values": {
+    "Age": 8.0,
+    "BMI": 27.0,
+    "HighBP": 0.0,
+    "HighChol": 0.0,
+    "GenHlth": 3.0,
+    "DiffWalk": 0.0,
+    "HeartDiseaseorAttack": 0.0
+  },
+  "threshold": 0.185,
+  "cost_assumptions": {
+    "cost_fn": 5.0,
+    "cost_fp": 1.0,
+    "note": "ASSUMED relative costs for decision simulation, not measured medical costs."
+  },
+  "data": {
+    "file": "diabetes_binary_health_indicators_BRFSS2015.csv",
+    "n_raw": 253680,
+    "n_duplicate_rows": 24206,
+    "duplicates_removed": true,
+    "n_used": 229474,
+    "prevalence_raw": 0.13933301797540207,
+    "prevalence_used": 0.1529454317264701
+  },
+  "split": {
+    "train": 137684,
+    "val": 45895,
+    "test": 45895,
+    "random_state": 42,
+    "scheme": "stratified 60/20/20; threshold tuned on validation, metrics on test"
+  },
+  "test_metrics": {
+    "pr_auc": 0.4351956385284509,
+    "roc_auc": 0.8118262219515265,
+    "prevalence_in_test": 0.15293604967861424,
+    "at_threshold": {
+      "recall": 0.7170537113548938,
+      "precision": 0.3401135288552507,
+      "f1": 0.46138332493010037,
+      "accuracy": 0.7439590369321277,
+      "fpr": 0.2511832493054841,
+      "fnr": 0.2829462886451061,
+      "flag_rate": 0.3224316374332716,
+      "tp": 5033,
+      "fp": 9765,
+      "fn": 1986,
+      "tn": 29111
+    }
+  },
+  "full_model_reference": {
+    "algorithm": "Histogram Gradient Boosting",
+    "n_features": 21,
+    "threshold": 0.18
+  },
+  "library_versions": {
+    "python": "3.13.18",
+    "scikit-learn": "1.9.1",
+    "pandas": "3.0.5",
+    "numpy": "2.5.3"
+  }
+}
